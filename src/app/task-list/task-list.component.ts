@@ -18,11 +18,11 @@ export class TaskListComponent implements OnInit {
 
   initTaskModels() {
     this.taskModels.push(
-      {id: '1', name: 'task1', category: 'category1', dateStart: '22:15 05.06.2020', dateEnd: '22:15 06.06.2020', status: true},
-      {id: '2', name: 'task2', category: 'category2', dateStart: '22:15 05.06.2020', dateEnd: '22:15 06.06.2020', status: true},
-      {id: '3', name: 'task3', category: 'category3', dateStart: '22:15 05.06.2020', dateEnd: '22:15 06.06.2020', status: true},
-      {id: '4', name: 'task4', category: 'category4', dateStart: '22:15 05.06.2020', dateEnd: '22:15 06.06.2020', status: true},
-      {id: '5', name: 'task5', category: 'category5', dateStart: '22:15 05.06.2020', dateEnd: '22:15 06.06.2020', status: true}
+      {id: '1', name: 'task1', category: 'category1', dateStart: '22:15 05.06.2020', dateEnd: '22:15 06.06.2020', status: 'Запланирована'},
+      {id: '2', name: 'task2', category: 'category2', dateStart: '22:15 05.06.2020', dateEnd: '22:15 06.06.2020', status: 'Выполнена'},
+      {id: '3', name: 'task3', category: 'category3', dateStart: '22:15 05.06.2020', dateEnd: '22:15 06.06.2020', status: 'Просрочена'},
+      {id: '4', name: 'task4', category: 'category4', dateStart: '22:15 05.06.2020', dateEnd: '22:15 06.06.2020', status: 'Выполнена'},
+      {id: '5', name: 'task5', category: 'category5', dateStart: '22:15 05.06.2020', dateEnd: '22:15 06.06.2020', status: 'Запланирована'}
     );
   }
 
@@ -36,5 +36,17 @@ export class TaskListComponent implements OnInit {
 
   filterTasks($event) {
     console.log($event.target.checked);
+  }
+
+  getTaskListSize() {
+    return this.taskModels?.length;
+  }
+
+  deleteTaskFromArray(name: string) {
+    console.log('Задача' + name + 'удалена');
+  }
+
+  getTaskAmountByStatus(status: string) {
+    return this.taskModels.filter(task => task.status === status)?.length;
   }
 }

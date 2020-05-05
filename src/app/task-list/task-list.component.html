@@ -9,7 +9,12 @@
     <input type="checkbox" checked (change)="filterTasks($event)"/>
   </label>
   <hr>
-  <app-statistic></app-statistic>
+  <app-statistic
+    [taskAll]="getTaskListSize()"
+    [tasksPlanned]="getTaskAmountByStatus('Запланирована')"
+    [tasksOverdue]="getTaskAmountByStatus('Просрочена')"
+    [tasksFinished]="getTaskAmountByStatus('Выполнена')"
+  ></app-statistic>
   <hr>
   <table class="table table-striped">
     <thead class="card-header-tabs">
